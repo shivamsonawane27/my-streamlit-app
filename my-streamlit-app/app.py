@@ -3,6 +3,8 @@ import time
 import base64
 import os
 
+# https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/my-streamlit-app//main/
+
 # Page config
 st.set_page_config(page_title="A Special Message 💕", page_icon="🍥")
 
@@ -92,7 +94,7 @@ if st.sidebar.checkbox("Show Debug Info"):
             size = os.path.getsize(f) / 1024  # KB
             st.sidebar.write(f"✅ {f} ({size:.1f} KB)")
 
-# Custom CSS for styling
+# Custom CSS for styling  
 st.markdown("""
     <style>
     .big-font {
@@ -185,7 +187,7 @@ else:
         with col2:
             st.markdown("<p class='naruto-font'>Hey there Ritika!</p>", unsafe_allow_html=True)
             try:
-                st.image("kakashi1.png", width=300)
+                st.image("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/my-streamlit-app//main/kakashi1.png", width=300)
             except:
                 st.info("📸 Add 'naruto_hello.jpg' here")
         
