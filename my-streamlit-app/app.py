@@ -1,61 +1,96 @@
 import streamlit as st
 import time
 import base64
+import os
 
 # Page config
 st.set_page_config(page_title="A Special Message 💕", page_icon="🍥")
 
 # Function to autoplay audio with better volume control
 def autoplay_audio(file_path, loop=False, volume=0.5):
+    if not os.path.exists(file_path):
+        return  # Skip if file doesn't exist
     try:
         with open(file_path, "rb") as f:
             data = f.read()
             b64 = base64.b64encode(data).decode()
             loop_attr = "loop" if loop else ""
+            
+            # Detect file type
+            if file_path.endswith('.m4a'):
+                audio_type = "audio/mp4"
+            elif file_path.endswith('.mp3'):
+                audio_type = "audio/mp3"
+            else:
+                audio_type = "audio/mpeg"
+            
             md = f"""
                 <audio id="bgMusic" autoplay {loop_attr} style="display:none;">
-                <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
+                <source src="data:{audio_type};base64,{b64}" type="{audio_type}">
                 </audio>
                 <script>
                 (function() {{
                     var audio = document.getElementById('bgMusic');
                     if (audio) {{
                         audio.volume = {volume};
-                        audio.play();
+                        audio.play().catch(function(e) {{
+                            console.log('Audio play failed:', e);
+                        }});
                     }}
                 }})();
                 </script>
                 """
             st.markdown(md, unsafe_allow_html=True)
-    except:
-        pass
+    except Exception as e:
+        st.error(f"Error loading audio: {file_path}")
 
 # Function to play sound effect with proper volume
 def play_sound_effect(file_path, volume=0.7):
+    if not os.path.exists(file_path):
+        return  # Skip if file doesn't exist
     try:
         with open(file_path, "rb") as f:
             data = f.read()
             b64 = base64.b64encode(data).decode()
-            # Generate unique ID for each sound effect
+            
+            # Detect file type
+            if file_path.endswith('.m4a'):
+                audio_type = "audio/mp4"
+            elif file_path.endswith('.mp3'):
+                audio_type = "audio/mp3"
+            else:
+                audio_type = "audio/mpeg"
+            
             import random
             sfx_id = f"sfx_{random.randint(1000, 9999)}"
             md = f"""
                 <audio id="{sfx_id}" autoplay style="display:none;">
-                <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
+                <source src="data:{audio_type};base64,{b64}" type="{audio_type}">
                 </audio>
                 <script>
                 (function() {{
                     var audio = document.getElementById('{sfx_id}');
                     if (audio) {{
                         audio.volume = {volume};
-                        audio.play();
+                        audio.play().catch(function(e) {{
+                            console.log('SFX play failed:', e);
+                        }});
                     }}
                 }})();
                 </script>
                 """
             st.markdown(md, unsafe_allow_html=True)
-    except:
-        pass
+    except Exception as e:
+        st.error(f"Error loading sound effect: {file_path}")
+
+# Debug mode - remove this after fixing
+if st.sidebar.checkbox("Show Debug Info"):
+    st.sidebar.write("**Files in directory:**")
+    files = os.listdir(".")
+    for f in sorted(files):
+        if f.endswith(('.png', '.mp3', '.m4a', '.jpg')):
+            size = os.path.getsize(f) / 1024  # KB
+            st.sidebar.write(f"✅ {f} ({size:.1f} KB)")
 
 # Custom CSS for styling
 st.markdown("""
