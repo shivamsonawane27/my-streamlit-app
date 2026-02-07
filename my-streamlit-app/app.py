@@ -187,7 +187,7 @@ else:
         with col2:
             st.markdown("<p class='naruto-font'>Hey there Ritika!</p>", unsafe_allow_html=True)
             try:
-                st.image("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/my-streamlit-app/main/kakashi1.png", width=300)
+                st.image("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/refs/heads/main/my-streamlit-app/kakashi1.png", width=300)
             except:
                 st.info("📸 Add 'naruto_hello.jpg' here")
         
