@@ -3,7 +3,7 @@ import time
 import base64
 import os
 
-# https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/my-streamlit-app//main/
+# https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/refs/heads/main/my-streamlit-app/
 
 # Page config
 st.set_page_config(page_title="A Special Message 💕", page_icon="🍥")
@@ -173,7 +173,7 @@ if not st.session_state.music_started:
 
 else:
     # Play background music at 50% volume
-    autoplay_audio("bg_naruto.mp3", loop=True, volume=0.1)
+    autoplay_audio("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/refs/heads/main/my-streamlit-app/bg_naruto.mp3", loop=True, volume=0.1)
 
     # Stage 0: Initial message
     if st.session_state.stage == 0:
@@ -187,7 +187,7 @@ else:
         with col2:
             st.markdown("<p class='naruto-font'>Hey there Ritika!</p>", unsafe_allow_html=True)
             try:
-                st.image("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/main/kakashi1.png", width=300)
+                st.image("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/refs/heads/main/my-streamlit-app/kakashi1.png", width=300)
             except:
                 st.info("📸 Add 'naruto_hello.jpg' here")
         
@@ -207,7 +207,7 @@ else:
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             try:
-                st.image("kakashi2.png", width=300)
+                st.image("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/refs/heads/main/my-streamlit-app/kakashi2.png", width=300)
             except:
                 st.info("📸 Add 'naruto_asking.jpg' here")
         
@@ -230,7 +230,7 @@ else:
 
     # Stage 2: Genjutsu trap!
     elif st.session_state.stage == 2:
-        play_sound_effect("sharingan.mp3", volume=0.9)
+        play_sound_effect("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/refs/heads/main/my-streamlit-app/sharingan.mp3", volume=0.9)
         
         st.markdown("<h1 class='genjutsu'>👁️ GENJUTSU ACTIVATED! 👁️</h1>", unsafe_allow_html=True)
         st.markdown("<br>", unsafe_allow_html=True)
@@ -239,7 +239,7 @@ else:
         with col2:
             st.markdown("<p class='naruto-font'>I must have you Ritika, I'm putting you under my genjutsu! 🌀</p>", unsafe_allow_html=True)
             try:
-                st.image("kakashi3.png", width=300)
+                st.image("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/refs/heads/main/my-streamlit-app/kakashi3.png", width=300)
             except:
                 st.info("📸 Add 'naruto_genjutsu.jpg' here")
         
@@ -301,7 +301,7 @@ else:
         animation_placeholder.empty()
         time.sleep(0.2)
         
-        play_sound_effect("smoke.m4a", volume=0.8)
+        play_sound_effect("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/refs/heads/main/my-streamlit-app/smoke.m4a", volume=0.8)
         
         st.markdown("<h1 class='center'>💕 It was me all along babe!!!! 💕</h1>", unsafe_allow_html=True)
         st.markdown("<br>", unsafe_allow_html=True)
@@ -309,7 +309,7 @@ else:
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             try:
-                st.image("my_photo.png", width=300)
+                st.image("https://raw.githubusercontent.com/shivamsonawane27/my-streamlit-app/refs/heads/main/my-streamlit-app/my_photo.png", width=300)
             except:
                 st.info("📸 Add 'my_photo.jpg' here")
         
