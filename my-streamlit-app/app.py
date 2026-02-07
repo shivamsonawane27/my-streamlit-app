@@ -85,14 +85,6 @@ def play_sound_effect(file_path, volume=0.7):
     except Exception as e:
         st.error(f"Error loading sound effect: {file_path}")
 
-# Debug mode - remove this after fixing
-if st.sidebar.checkbox("Show Debug Info"):
-    st.sidebar.write("**Files in directory:**")
-    files = os.listdir(".")
-    for f in sorted(files):
-        if f.endswith(('.png', '.mp3', '.m4a', '.jpg')):
-            size = os.path.getsize(f) / 1024  # KB
-            st.sidebar.write(f"✅ {f} ({size:.1f} KB)")
 
 # Custom CSS for styling  
 st.markdown("""
